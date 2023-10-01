@@ -100,6 +100,7 @@ The current project runs 10 key function namely
 -**printBusDetails()**
 -**loadBusData()**
 -**displayBusSummary()**
+
 The table below breifly explains what each function does in this project.
 
 | Function             | What it Does                                        |
@@ -114,4 +115,31 @@ The table below breifly explains what each function does in this project.
 | `printBusDetails()`  | Prints detailed information in the system |
 | `loadBusData()`      | Loads data related to buses in the system      |
 | `displayBusSummary()`| Displays a summary of bus/booking history |
+
+I used three key structures in this system  
+
+| Structure                                   | Function                                           |
+| ------------------------------------------- | -------------------------------------------------- |
+| **`struct Bus`**                            | Represents bus information including unique number, number plate, departure location, destination, timing, journey date, and seating chart. |
+|                                             | `int uniqueNumber;` - Holds the unique identifier for the bus. |
+|                                             | `char numberPlate[10];` - Stores the bus's number plate. |
+|                                             | `char departureLocation[20];` - Represents the departure location. |
+|                                             | `char destination[20];` - Represents the destination of the bus. |
+|                                             | `char busTiming[10];` - Stores the bus's timing information. |
+|                                             | `char journeyDate[12];` - Represents the journey date. |
+|                                             | `char busSeatingChart[NUM_ROWS][NUM_COLS];` - Stores the bus's seating chart. |
+| **`struct bus1`**                           | Represents bus information including bid, name, locations, timing, and date. |
+|                                             | `int bid;` - Holds the bus's unique identifier (ID). |
+|                                             | `char noplate[25];` - Stores the bus's number plate. |
+|                                             | `char location1[25];` - Represents departure location. |
+|                                             | `char location2[25];` - Represents destination location. |
+|                                             | `char timing[15];` - Stores the bus's timing information. |
+|                                             | `char date[15];` - Represents the date of the bus's operation. |
+| **`struct booking1`**                       | Represents booking information including busno, ID, adult counts, children, date, and time. |
+|                                             | `int busno, ID;` - Holds the bus number and ID. |
+|                                             | `int Maleadult;` - Stores the count of male adults. |
+|                                             | `int Femaleadult;` - Stores the count of female adults. |
+|                                             | `int children;` - Stores the count of children. |
+|                                             | `char date[25];` - Represents the date of the booking. |
+|                                             | `char time[25];` - Represents the time of the booking. |
 
