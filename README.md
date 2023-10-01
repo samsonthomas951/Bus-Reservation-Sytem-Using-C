@@ -60,29 +60,26 @@ If your plans change and you can't make your trip, don't worry:
 
 2. **Cancel Booking**: Select 5 on the main menu.
 
-<ol>
+<ul>
 	<li>Enter the your booking ID</li>
 	<li>Confirm that you want to cancel</li>
-</ol>
+</ul>
 
 ### Viewing Booking History
 
 1. **Open the Program**: Open the program
 
 2. **Check History**: Select 7 on the main menu.
-<ol>
+<ul>
 	<li>Ebter the Bus ID number of the bus you want to view history of</li>
 	<li>This will display the bus history you cant press any key to cotinue</li>
-<ol>
+<ul>
 
 ## Features
 
 - **Employee Login**: Employees can log in securely to access the system.
-
 - **Bus Information Management**: Employees can add, edit, or delete bus schedules.
-
 - **Booking Management**: Customers can search for buses, book seats, and receive tickets.
-
 - **Booking History**: Easily view all your past bookings.
 
 ## Tech Stuff (Optional)
