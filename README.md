@@ -38,7 +38,7 @@ Git clone the repo and navigate to the ```BusReservationSystemUsingC.c``` file.
 	<li>busrecord.txt file</li>
 	<li>busbooking.txt file</li>
 </ol>
-<i>this is where the file handling of the system is done<i>
+<i>this is where the file handling of the system is done</i>
 </div>
 
 2. **Log In**: Enter the correct username and password to acces the system.
