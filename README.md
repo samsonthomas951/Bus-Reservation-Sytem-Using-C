@@ -88,12 +88,14 @@ If your plans change and you can't make your trip, don't worry:
 ## Tech Stuff (Optional)
 
 If you're curious about how it works behind the scenes:
+
 Here is the data flow diagram of the system 
 #### Data flow diagram 
 ![DFD](dataflowdiagrams.png)
 #### The flow chart
 The flow chart of this system was big and i could not make it smaller to fit here 
 If you want to see it you can click [here](https://app.eraser.io/workspace/q4tpddNMJlZafguLfmON) it is hosted online.
+
 ⚠The flowchart is not **ReadOnly** so *Please dont modify it*⚠
 #### Functions
 The current project runs 10 key function namely 
