@@ -73,7 +73,7 @@ If your plans change and you can't make your trip, don't worry:
 <ul>
 	<li>Ebter the Bus ID number of the bus you want to view history of</li>
 	<li>This will display the bus history you cant press any key to cotinue</li>
-<ul>
+</ul>
 
 ## Features
 
