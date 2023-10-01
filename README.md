@@ -150,3 +150,21 @@ I used three key structures in this system
 |                                             | `char date[25];` - Represents the date of the booking. |
 |                                             | `char time[25];` - Represents the time of the booking. |
 
+## Screen Shots
+1. **login scree**
+![login](https://photos.app.goo.gl/zRUbvTbh4uVhwkZN8)
+
+2. **Main menu**
+![Main menu](https://photos.app.goo.gl/hVHPEL7Xp3k191Gw6)
+
+3. **Adding bus schedule**
+![adding](https://photos.app.goo.gl/Uo9SA7opiRLNs65i7)
+
+4. **Seat selection**
+![seatselection](https://photos.app.goo.gl/3yzV2c6KP32mrP3BA)
+
+5. **Tickets**
+![tickets](https://photos.app.goo.gl/ScL4p5if3WSDi94A6)
+
+6. **Receipt**
+![receipt](https://photos.app.goo.gl/maTWLUfrs2PugfWJ6)   
