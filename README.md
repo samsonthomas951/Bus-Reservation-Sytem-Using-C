@@ -89,10 +89,29 @@ If your plans change and you can't make your trip, don't worry:
 
 If you're curious about how it works behind the scenes:
 
-- The system uses files to store information so it doesn't get lost when you close the program.
+The current project runs 10 key function namely 
+-**Add()**
+-**bus()**
+-**booking()**
+-**status()**
+-**cancel()**
+-**login()**
+-**delete()**
+-**printBusDetails()**
+-**loadBusData()**
+-**displayBusSummary()**
+The table below breifly explains what each function does in this project.
 
-- It's programmed in C, a computer language that makes all of this possible.
-
-
-## Screen shots 
+| Function             | What it Does                                        |
+| -------------------- | --------------------------------------------------- |
+| `Add()`              | This function takes inputs from the user about bus details and stores them on busrecord.txt file|
+| `bus()`              | Reads busrecord.txt file and display the data as the bus schedules|
+| `booking()`          | Handles the booking of tickets within the in the system |
+| `status()`           | Checks the status of a booking on a particular bus       |
+| `cancel()`           | Cancel tickets when the user wants |
+| `login()`            | Handles user authentication within the project     |
+| `delete()`           | Deletes bus schedule|
+| `printBusDetails()`  | Prints detailed information about a bus within the project |
+| `loadBusData()`      | Loads data related to buses in the project         |
+| `displayBusSummary()`| Displays a summary of bus-related information within the project |
 
