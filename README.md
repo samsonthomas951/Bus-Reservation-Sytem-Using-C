@@ -85,7 +85,7 @@ If your plans change and you can't make your trip, don't worry:
 
 - **Booking History**: Easily view all your past bookings.
 
-## Tech Stuff (Optional)
+### Tech Stuff (Optional)
 
 If you're curious about how it works behind the scenes:
 
@@ -106,12 +106,12 @@ The table below breifly explains what each function does in this project.
 | -------------------- | --------------------------------------------------- |
 | `Add()`              | This function takes inputs from the user about bus details and stores them on busrecord.txt file|
 | `bus()`              | Reads busrecord.txt file and display the data as the bus schedules|
-| `booking()`          | Handles the booking of tickets within the in the system |
+| `booking()`          | Handles the booking,updating busrecord,printing tickets |
 | `status()`           | Checks the status of a booking on a particular bus       |
 | `cancel()`           | Cancel tickets when the user wants |
-| `login()`            | Handles user authentication within the project     |
+| `login()`            | Handles user authentication in the system    |
 | `delete()`           | Deletes bus schedule|
-| `printBusDetails()`  | Prints detailed information about a bus within the project |
-| `loadBusData()`      | Loads data related to buses in the project         |
-| `displayBusSummary()`| Displays a summary of bus-related information within the project |
+| `printBusDetails()`  | Prints detailed information in the system |
+| `loadBusData()`      | Loads data related to buses in the system      |
+| `displayBusSummary()`| Displays a summary of bus/booking history |
 
