@@ -88,7 +88,11 @@ If your plans change and you can't make your trip, don't worry:
 ### Tech Stuff (Optional)
 
 If you're curious about how it works behind the scenes:
+Here is the data flow diagram of the system 
+#### Data flow diagram 
+![DFD](dataflowdiagrams.png)
 
+<image
 The current project runs 10 key function namely 
 -**Add()**
 -**bus()**
