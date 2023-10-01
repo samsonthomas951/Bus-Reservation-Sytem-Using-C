@@ -85,14 +85,17 @@ If your plans change and you can't make your trip, don't worry:
 
 - **Booking History**: Easily view all your past bookings.
 
-### Tech Stuff (Optional)
+## Tech Stuff (Optional)
 
 If you're curious about how it works behind the scenes:
 Here is the data flow diagram of the system 
 #### Data flow diagram 
 ![DFD](dataflowdiagrams.png)
-
-<image
+#### The flow chart
+The flow chart of this system was big and i could not make it smaller to fit here 
+If you want to see it you can click [here](https://app.eraser.io/workspace/q4tpddNMJlZafguLfmON) it is hosted online.
+⚠The flowchart is not **ReadOnly** so *Please dont modify it*⚠
+#### Functions
 The current project runs 10 key function namely 
 -**Add()**
 -**bus()**
@@ -120,6 +123,7 @@ The table below breifly explains what each function does in this project.
 | `loadBusData()`      | Loads data related to buses in the system      |
 | `displayBusSummary()`| Displays a summary of bus/booking history |
 
+#### Structures
 I used three key structures in this system  
 
 | Structure                                   | Function                                           |
