@@ -31,6 +31,9 @@ struct{
 #define NUM_ROWS 12
 #define NUM_COLS 4
 #define MAX_SEATS 48
+#define FILENAME "booking_ids.txt"
+#define MAX_STR_LEN 10
+#define NUM_STRINGS 5
 
 struct Bus {
     int uniqueNumber;
@@ -67,6 +70,7 @@ FILE *busbooking;
 FILE *busseat;
 FILE *fp2;
 FILE *temp2;
+FILE *seats;
 
 
 int main()
@@ -132,6 +136,31 @@ int main()
     	printf("\t----------------------------------------------------------------------------------------------------------\n");
     	return 0;
 	}
+
+int generateBookingID() {
+    FILE *file = fopen(FILENAME, "r+");
+    if (file == NULL) {
+        perror("Error opening file");
+        exit(1);
+    }
+
+    int maxID = 0;
+    char line[100];
+    while (fgets(line, sizeof(line), file)) {
+        int id;
+        if (sscanf(line, "%d", &id) == 1) {
+            if (id > maxID) {
+                maxID = id;
+            }
+        }
+    }
+    int newID = maxID + 1;
+    fseek(file, 0, SEEK_END);
+    fprintf(file, "%d\n", newID);
+    fclose(file);
+
+    return newID;
+}
 
 void login()
 {
@@ -335,11 +364,25 @@ void saveBusData(struct Bus buses[], int numBuses) {
     }
 }
 
+void saveSeatingPositions(int busno, int ID, char (*seatingPositions)[3], int totpass) {
+    FILE *fp;
+    fp = fopen("seatingPositions.txt", "a+");
+
+    fprintf(fp, "%d\t%d\t", busno, ID);
+    for (int i = 0; i < totpass; i++) {
+        fprintf(fp, "%s\t", seatingPositions[i]);
+    }
+    fprintf(fp, "\n");
+
+    fclose(fp);
+}
+
+
 
 
 
 void booking() {
-    struct Bus buses[100]; // Assuming you have at most 100 buses
+    struct Bus buses[100]; 
     int numBuses = 0; // Number of buses loaded from file
     int Found=0,Found1=0,Found2=0,Target,getid,getid2=0,tempid=0,conti,n,Maleadult, Femaleadult,children,bank_name, payment_name, price, gst=0, total=0,i=0, j,amt=500,totamt,bookedbusno;
     char cvv_number[4],a[20];
@@ -388,8 +431,8 @@ void booking() {
             printf("\n\t\t\t\tBus Details:\n");
             printBusDetails(buses[selectedBusIndex]);
             busbooking = fopen("busbooking.txt","r");
-            printf("\tEnter Booking ID(User Reference): ");
-			scanf("%d",&getid);
+            int getid = generateBookingID();
+            printf("\tYour booking ID is : %d",getid);
            
             tempid=tempid+getid;
             while(!feof(busbooking) && Found2==0){
@@ -429,13 +472,16 @@ void booking() {
             
             booking1.busno = busNumber;
 			booking1.ID = tempid;
-
+            
 			busbooking = fopen("busbooking.txt","a+");
 			fprintf(busbooking,"\n%d\t%d\t%s\t%s\t%d\t%d\t%d\t",booking1.busno,booking1.ID,booking1.date,booking1.time,booking1.Maleadult,booking1.Femaleadult,booking1.children);
 			fclose(busbooking);  
-            
+            int totpass = (booking1.Maleadult + booking1.Femaleadult + booking1.children);
+            // Allocate memory for seatingPositions array
+            char (*seatingPositions)[3] = malloc(totpass * sizeof(*seatingPositions));
+            int seatsSelected = 0;
             while (1) {
-                system("cls");
+                //system("cls");
                 // Display the seating chart for the selected bus
                 printf("=========================================== BUS RESERVATION SYSTEM ==================================================\n\n");
                 printf("*********************************************** BUS BOOKING *********************************************************");
@@ -468,9 +514,21 @@ void booking() {
                     buses[selectedBusIndex].busSeatingChart[row][col] = 'X';
                     printf("\t\t\tSeat reserved successfully!\n");
                     saveBusData(buses, numBuses);
+                    // Save the selected seat position
+                    sprintf(seatingPositions[seatsSelected++], "%c%d", 'A' + row, col + 1);
+
+                    // If the user has selected totpass seats, save the seating positions and break the loop
+                    if (seatsSelected == totpass) {
+                        saveSeatingPositions(booking1.busno, booking1.ID, seatingPositions, totpass);
+                        break;
+                    }
                 }
             }
-            system("cls");
+            //clearing the allocated memory
+            free(seatingPositions);
+            
+
+            //system("cls");
             printf("=========================================== BUS RESERVATION SYSTEM ==================================================\n\n");
             printf("*********************************************** BUS BOOKING *********************************************************\n\n");
             printf("~---------------------------------------------------~\n");
@@ -604,10 +662,57 @@ void status()
    
  
 }
+
+void removeSeats(struct Bus buses[], int numBuses, int selectedBusIndex, int userID, int tot1) {
+    FILE *seatingFile = fopen("seatingPositions.txt", "r");
+    if (!seatingFile) {
+        printf("Error opening seatingPositions.txt for reading.\n");
+        return;
+    }
+    char line[100];
+    while (fgets(line, sizeof(line), seatingFile)) {
+        int fileUserID;
+        sscanf(line, "%*d %d", &fileUserID);
+        if (fileUserID == userID) {
+            char strings[NUM_STRINGS][MAX_STR_LEN];
+            int val1, val2;
+            sscanf(line, "%d %d %s %s %s %s %s ", &val1, &val2, strings[0], strings[1], strings[2], strings[3], strings[4]);
+            for (int i = 0; i < tot1; ++i) {
+                printf("str%d: %s\n", i + 1, strings[i]);
+                int row = strings[i][0] - 'A';
+                int col = strings[i][1] - '1';
+                if (row < 0 || row >= NUM_ROWS || col < 0 || col >= NUM_COLS) {
+                    printf("\t\t\tInvalid seating position found in the file. Please try again.\n");
+                    fclose(seatingFile);
+                    continue;
+                }
+                if (row == 0 && col < 2) {
+                    printf("\t\t\tCannot remove staff seat. Please choose another seat.\n");
+                } else if (buses[selectedBusIndex].busSeatingChart[row][col] != 'X') {
+                    printf("\t\t\tSeat is not reserved. Please choose another seat.\n");
+                } else {
+                    buses[selectedBusIndex].busSeatingChart[row][col] = ' ';
+                    printf("\t\t\tSeat removed successfully!\n");
+                    saveBusData(buses, numBuses); // Save the updated seating chart
+                }
+            }
+            fclose(seatingFile);
+            return;
+        }
+        
+    }
+    printf("\t\t\tUserID not found in seatingPositions.txt. Please try again.\n");
+    fclose(seatingFile);
+}
+
 void cancel()
-{
+{  
+    struct Bus buses[100]; 
+    int numBuses = 0;
  	int seat_no,i,j,tot1,totcancel,Found,Target4;
+    int selectedBusIndex;
  	char numstr[100],tempstr2[15]="number",tempstr1[15]="status";
+    loadBusData(buses, &numBuses);
     system("cls");
     printf("=========================================== BUS RESERVATION SYSTEM ==================================================\n\n");
     printf("********************************************* CANCEL TICKETS *********************************************************\n\n");
@@ -620,63 +725,62 @@ void cancel()
 		getch();
 	}
     else
-    {
-        while(!feof(temp2))
-        {
-            fscanf(temp2,"%d %d %s %s %d %d %d",&booking1.busno,&booking1.ID,booking1.date,booking1.time,&booking1.Maleadult,&booking1.Femaleadult,&booking1.children);
-            if(Target4==booking1.ID)
-			{
-              	Found=1;
-			}
-			else
-			{
-				Found=0;
-			}
-            if(Found)
-            {
-                tot1 = booking1.Maleadult + booking1.Femaleadult + booking1.children;
-                printf("\n\t\t\tNumber of Tickets Booked : %d",tot1);
-                printf("\n\t\t\tEnter the Number of Tickets to be Cancelled : " );
-                scanf("%d",&totcancel);
-                for (i=0;i<totcancel;i++)
-				{                      
-				    if(booking1.children>0)
-					{
-                      	booking1.children--;
-					}
-					else
-					{
-						if(booking1.Femaleadult>0)
-						{
-							booking1.Femaleadult--;
-						}
-						else
-						{
-							booking1.Maleadult--;
-						}	
-					}
-				}
-                fprintf(fp2,"\n%d\t%d\t%s\t%s\t%d\t%d\t%d\t",booking1.busno,booking1.ID,booking1.date,booking1.time,booking1.Maleadult,booking1.Femaleadult,booking1.children);
-                break;
-			}
-            else if(!Found)
-			{
-                fprintf(fp2,"\n%d\t%d\t%s\t%s\t%d\t%d\t%d\t",booking1.busno,booking1.ID,booking1.date,booking1.time,booking1.Maleadult,booking1.Femaleadult,booking1.children);
-			}
-            if(feof(temp2))
-			{
-				break;
-            }
-        }
-        fclose(temp2);
-        fclose(fp2);
-        fclose(busbooking);
-        remove("busbooking.txt");
-        rename("fp2.txt","busbooking.txt");
- 	printf("\n======================================================================================================\n");
- 	printf("\t\t\t\tKsh. %d has been Returned\t\t\t\n",1500*totcancel);
-    printf("======================================================================================================\n");
-}
+    { 
+        while(!feof(temp2)) { 
+            fscanf(temp2,"%d %d %s %s %d %d %d",&booking1.busno,&booking1.ID,booking1.date,booking1.time,&booking1.Maleadult,&booking1.Femaleadult,&booking1.children); 
+
+            if(Target4==booking1.ID) { 
+                Found=1; 
+            } else { 
+                Found=0; 
+            } 
+
+            if(Found) { 
+                for (int i = 0; i < numBuses; i++) {
+                    if (buses[i].uniqueNumber == booking1.busno) {
+                        selectedBusIndex = i;
+                        break;
+                    }
+                }
+
+                int userID = booking1.ID; 
+
+                tot1 = booking1.Maleadult + booking1.Femaleadult + booking1.children; 
+                removeSeats(buses, numBuses, selectedBusIndex,userID,tot1); 
+                for (i=0;i<tot1;i++) { 
+                    if(booking1.children>0) { 
+                        booking1.children--; 
+                    } else { 
+                        if(booking1.Femaleadult>0) { 
+                            booking1.Femaleadult--; 
+                        } else { 
+                            booking1.Maleadult--; 
+                        } 
+                    } 
+                } 
+
+                fprintf(fp2,"\n%d\t%d\t%s\t%s\t%d\t%d\t%d\t",booking1.busno,booking1.ID,booking1.date,booking1.time,booking1.Maleadult,booking1.Femaleadult,booking1.children); 
+                break; 
+            } else if(!Found) { 
+                fprintf(fp2,"\n%d\t%d\t%s\t%s\t%d\t%d\t%d\t",booking1.busno,booking1.ID,booking1.date,booking1.time,booking1.Maleadult,booking1.Femaleadult,booking1.children); 
+            } 
+
+            if(feof(temp2)) { 
+                break; 
+            } 
+        } 
+
+        fclose(temp2); 
+        fclose(fp2); 
+        fclose(busbooking); 
+
+        remove("busbooking.txt"); 
+        rename("fp2.txt","busbooking.txt"); 
+
+        printf("\n======================================================================================================\n"); 
+        printf("\t\t\t\tKsh. %d has been Returned\t\t\t\n",1500*tot1); 
+        printf("======================================================================================================\n"); 
+    } 
 }
 
 void delete(){
@@ -725,7 +829,7 @@ void delete(){
             printf("Enter 'y' to confirm deletion, or any other key to cancel: ");
             
             char confirmation;
-            scanf(" %c", &confirmation);
+            scanf("%c", &confirmation);
             
             if (confirmation == 'y' || confirmation == 'Y') {
                 // Shift the remaining buses to fill the gap left by the deleted bus
@@ -769,6 +873,8 @@ void delete(){
 }
 
 
+
+
 void displayBusSummary(const char *filename) {
     int busID;
     struct Bus buses[100]; 
@@ -781,7 +887,7 @@ void displayBusSummary(const char *filename) {
 
         // Display the list of buses with their details
         printf("=========================================== BUS RESERVATION SYSTEM ==================================================\n\n");
-        printf("*********************************************** BUS BOOKING *********************************************************");
+        printf("*********************************************** BUS HISTORY *********************************************************");
         printf("\n\t\t\t\tList of Buses:\n");
         for (int i = 0; i < numBuses; i++) {
             printf("\t\t\t%d. %s to %s, Timing: %s, Date: %s\n",
@@ -793,10 +899,26 @@ void displayBusSummary(const char *filename) {
         }
         printf("\n*********************************************************************************************************************");
         printf("\n\t\tEnter the ID of bus that you want view history of (-1 to cancel): ");
+        // int busNumber;
         scanf("%d", &busID);
         getchar();
+
         if (busID == -1) {
-            break; // Exit the loop if -1 is entered
+            break; // Exit the program
+        }
+
+        int selectedBusIndex = -1; // Index of the currently selected bus
+
+        // Find the selected bus by its unique number
+        for (int i = 0; i < numBuses; i++) {
+            if (buses[i].uniqueNumber == busID) {
+                selectedBusIndex = i;
+                break;
+            }
+        }
+
+        if (selectedBusIndex == -1) {
+            printf("\t\t\tBus with unique number %d not found.\n", busID);
         } else {
             FILE *busbooking = fopen("busbooking.txt", "r");
             if (busbooking == NULL) {
@@ -829,6 +951,10 @@ void displayBusSummary(const char *filename) {
             emptyseats = totalseats-onboardtotal;
             printf("=========================================== BUS RESERVATION SYSTEM ============================================\n\n");
             printf("************************************************ BUS HISTORY *************************************************\n");
+            printf("\n");
+            printBusSeatingChart(buses[selectedBusIndex]);
+            printf("\t|__________________________________________________________________________|\n");
+            printf("\n\n\n");
             printf("\t\t\t\t|Summary for Bus ID %d:\t\t|\n", busID);
             printf("\t\t\t\t|_______________________________________|\n");
             printf("\t\t\t\t| Date: %s \t\t\t|\n", foundDate); 
