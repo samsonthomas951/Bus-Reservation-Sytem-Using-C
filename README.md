@@ -152,22 +152,22 @@ I used three key structures in this system
 
 ## Screen Shots
 1. **login scree**
-![login](images/Screenshot (228).png)
+![login](https://github.com/samsonthomas951/Bus-Reservation-Sytem-Using-C/blob/main/images/Screenshot%20(228).png)
 
 2. **Main menu**
-![Main menu](images/Screenshot (229).png)
+![Main menu](https://github.com/samsonthomas951/Bus-Reservation-Sytem-Using-C/blob/main/images/Screenshot%20(229).png)
 
 3. **Adding bus schedule**
-![adding](images/Screenshot (230).png)
+![adding](https://github.com/samsonthomas951/Bus-Reservation-Sytem-Using-C/blob/main/images/Screenshot%20(230).png)
 
 4 . **Bus selection**
-![busselection](images/Screenshot (231).png)
+![busselection](https://github.com/samsonthomas951/Bus-Reservation-Sytem-Using-C/blob/main/images/Screenshot%20(231).png)
 
 5. **Seat selection**
-![seatselection](images/Screenshot (232).png)
+![seatselection](https://github.com/samsonthomas951/Bus-Reservation-Sytem-Using-C/blob/main/images/Screenshot%20(232).png)
 
 6. **Tickets**
-![tickets](images/Screenshot (233).png)
+![tickets](https://github.com/samsonthomas951/Bus-Reservation-Sytem-Using-C/blob/main/images/Screenshot%20(233).png)
 
 7. **Receipt**
 ![receipt](https://github.com/samsonthomas951/Bus-Reservation-Sytem-Using-C/blob/main/images/Screenshot%20(234).png) 
