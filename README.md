@@ -192,6 +192,7 @@ I used three key structures in this system
 
 1. Do not modify the ```busrecode.txt``` file externally because it will hult the normal functioning of the program.
 2. You can clear all the ```.txt``` files in order to have accurate data when you start the system,*The existing ones may be inacurate because I used them for **development only***.
-3. While adding the bus schedule **do not** insert spaces between records you enter eg in numberplate: KAB123C ✔,  numberplate: KAB 123C ❌.
-4. A single booking ID can **only** hold upto **5 passangers** do not exceed 5. 
+3. While adding the bus schedule **do not** insert spaces between records you enter bus record
+   eg in numberplate: KAB123C ✔,  numberplate: KAB 123C ❌.
+5. A single booking ID can **only** hold upto **5 passangers** do not exceed 5. 
 
