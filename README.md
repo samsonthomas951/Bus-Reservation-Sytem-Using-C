@@ -152,7 +152,7 @@ I used three key structures in this system
 
 ## Screen Shots
 1. **login scree**
-![login](https://photos.app.goo.gl/zRUbvTbh4uVhwkZN8)
+![login](images/Screenshot (228).png)
 
 2. **Main menu**
 ![Main menu](https://photos.app.goo.gl/hVHPEL7Xp3k191Gw6)
