@@ -12,7 +12,7 @@ Welcome to our Simple Bus Reservation and Booking System! This system helps you 
 - [Canceling a Booking](#canceling-a-booking)
 - [Viewing Booking History](#viewing-booking-history)
 - [Tech Stuff (Optional)](#tech-stuff-optional)
-- [Screen Shots](#screenshots)
+- [Screen Shots](#screen-shots)
 
 ## What is this?
 
@@ -150,7 +150,7 @@ I used three key structures in this system
 |                                             | `char date[25];` - Represents the date of the booking. |
 |                                             | `char time[25];` - Represents the time of the booking. |
 
-## Screen Shots
+## Screen shots
 1. **login scree**
 ![login](https://github.com/samsonthomas951/Bus-Reservation-Sytem-Using-C/blob/main/images/Screenshot%20(228).png)
 
