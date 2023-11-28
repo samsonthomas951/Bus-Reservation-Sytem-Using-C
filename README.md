@@ -13,6 +13,7 @@ Welcome to our Simple Bus Reservation and Booking System! This system helps you 
 - [Viewing Booking History](#viewing-booking-history)
 - [Tech Stuff (Optional)](#tech-stuff-optional)
 - [Screen Shots](#screen-shots)
+- [Disclaimer⚠](#take-note)
 
 ## What is this?
 
@@ -185,7 +186,7 @@ I used three key structures in this system
 ![receipt](https://github.com/samsonthomas951/Bus-Reservation-Sytem-Using-C/blob/main/images/Screenshot%20(234).png)
 
 ## **Take note**
-###The below consider the below information to run the system smoothly without errors.
+### The below consider the below information to run the system smoothly without errors.
 
 ---
 
