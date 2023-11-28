@@ -170,4 +170,4 @@ I used three key structures in this system
 ![tickets](images/Screenshot (233).png)
 
 7. **Receipt**
-![receipt](images/Screenshot (234).png)   
+![receipt](https://github.com/samsonthomas951/Bus-Reservation-Sytem-Using-C/blob/main/images/Screenshot%20(234).png) 
