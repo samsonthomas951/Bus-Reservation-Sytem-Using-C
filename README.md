@@ -44,6 +44,7 @@ Git clone the repo and navigate to the ```BusReservationSystemUsingC.c``` file.
 </div>
 
 2. **Log In**: Enter the correct username and password to acces the system.
+   **Below are the password and username to log in to the system you can modify them on the source code ```BusReservationSystemUsingC.c``` to your liking.**
 username
 ```txt
 user
@@ -171,7 +172,7 @@ I used three key structures in this system
 3. **Adding bus schedule**
 ![adding](https://github.com/samsonthomas951/Bus-Reservation-Sytem-Using-C/blob/main/images/Screenshot%20(230).png)
 
-4 . **Bus selection**
+4. **Bus selection**
 ![busselection](https://github.com/samsonthomas951/Bus-Reservation-Sytem-Using-C/blob/main/images/Screenshot%20(231).png)
 
 5. **Seat selection**
@@ -181,4 +182,15 @@ I used three key structures in this system
 ![tickets](https://github.com/samsonthomas951/Bus-Reservation-Sytem-Using-C/blob/main/images/Screenshot%20(233).png)
 
 7. **Receipt**
-![receipt](https://github.com/samsonthomas951/Bus-Reservation-Sytem-Using-C/blob/main/images/Screenshot%20(234).png) 
+![receipt](https://github.com/samsonthomas951/Bus-Reservation-Sytem-Using-C/blob/main/images/Screenshot%20(234).png)
+
+## **Take note**
+###The below consider the below information to run the system smoothly without errors.
+
+---
+
+1. Do not modify the ```busrecode.txt``` file externally because it will hult the normal functioning of the program.
+2. You can clear all the ```.txt``` files in order to have accurate data when you start the system,*The existing ones may be inacurate because I used them for **development only***.
+3. While adding the bus schedule **do not** insert spaces between records you enter eg in numberplate: KAB123C ✔,  numberplate: KAB 123C ❌.
+4. A single booking ID can **only** hold upto **5 passangers** do not exceed 5. 
+
