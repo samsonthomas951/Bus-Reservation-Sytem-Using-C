@@ -155,16 +155,19 @@ I used three key structures in this system
 ![login](images/Screenshot (228).png)
 
 2. **Main menu**
-![Main menu](https://photos.app.goo.gl/hVHPEL7Xp3k191Gw6)
+![Main menu](images/Screenshot (229).png)
 
 3. **Adding bus schedule**
-![adding](https://photos.app.goo.gl/Uo9SA7opiRLNs65i7)
+![adding](images/Screenshot (230).png)
 
-4. **Seat selection**
-![seatselection](https://photos.app.goo.gl/3yzV2c6KP32mrP3BA)
+4 . **Bus selection**
+![busselection](images/Screenshot (231).png)
 
-5. **Tickets**
-![tickets](https://photos.app.goo.gl/ScL4p5if3WSDi94A6)
+5. **Seat selection**
+![seatselection](images/Screenshot (232).png)
 
-6. **Receipt**
-![receipt](https://photos.app.goo.gl/maTWLUfrs2PugfWJ6)   
+6. **Tickets**
+![tickets](images/Screenshot (233).png)
+
+7. **Receipt**
+![receipt](images/Screenshot (234).png)   
