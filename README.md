@@ -34,14 +34,25 @@ Git clone the repo and navigate to the ```BusReservationSystemUsingC.c``` file.
 1. **Open the Program**: Run the code on a compliler of your choice 
 <div align="center">
 ⚠Make sure you have the following on the same folder as the code⚠
-<ol>
+<ul>
 	<li>busrecord.txt file</li>
 	<li>busbooking.txt file</li>
-</ol>
+ 	<li>seatingPositions.txt</li>
+	<li>booking_ids.txt</li>
+</ul>
 <i>this is where the file handling of the system is done</i>
 </div>
 
 2. **Log In**: Enter the correct username and password to acces the system.
+username
+```txt
+user
+```   
+pass
+```txt
+pass
+```
+   
 ### Booking a Bus
 
 1. **Search for Buses**: Select 3 on the main menu and select the bust you want to trav
